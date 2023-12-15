@@ -1,0 +1,275 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-rows: 130px 50px 1fr;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-image: url("./images/cool-background.png");
+  background-size: cover;
+}
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#header h1 {
+  text-align: center;
+  font-size: 50px;
+  text-transform: uppercase;
+  color: #222;
+  letter-spacing: 1px;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+}
+#header h1 span {
+  margin-top: 5px;
+  font-size: 15px;
+  color: #444;
+  word-spacing: 1px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: 27px 0;
+  grid-gap: 20px;
+  align-items: center;
+}
+
+#header h1 span:after,
+#header h1 span:before {
+  content: " ";
+  display: block;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  height: 5px;
+  background-color: #f8f8f8;
+}
+
+#top-bar {
+  display: flex;
+  width: auto;
+  align-items: center;
+  margin: 2px;
+}
+.top-container {
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(63, 42, 42);
+  height: 50px;
+  /* width: auto; */
+  margin: 2px;
+  padding: 0;
+  border: 0;
+  border-radius: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-spacing: 1px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+}
+.top-container:hover {
+  box-shadow: 0px 0px 7px rgba(33, 33, 33, 0.5);
+  cursor: pointer;
+}
+.top-container:first-child {
+  flex: 0 0 15%;
+}
+.top-container:nth-child(2) {
+  flex: 0 0 15%;
+}
+.top-container:nth-child(3) {
+  flex: 0 0 66%;
+  padding-left: 15px;
+  background-color: rgba(255, 255, 255, 0.726);
+  color: black;
+}
+.top-container:last-child {
+  flex: 0 0 3%;
+  background-image: url("./images/search-icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: scale(0.8);
+}
+.top-container:last-child:hover {
+  transform: scale(1);
+}
+.top-container:last-child:active {
+  transform: scale(0.7);
+}
+
+.create-modal {
+  /* modals are hidden by default */
+  display: none;
+
+  /* modal container fixed across whole screen */
+  position: fixed;
+  inset: 0;
+
+  /* z-index must be higher than everything else on the page */
+  z-index: 10000;
+
+  /* semi-transparent black background exposed by padding */
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 40px;
+
+  /* enables scrolling for tall modals */
+  overflow: auto;
+}
+
+.create-modal.open {
+  display: block;
+}
+
+.create-modal-body {
+  text-align: center;
+  min-height: 80%;
+  margin-left: 20%;
+  margin-right: 20%;
+  position: relative;
+  display: flex;
+  min-width: 0;
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+body.create-modal-open {
+  /* body overflow is hidden to hide main scrollbar when modal window is open */
+  overflow: hidden;
+  align-items: center;
+}
+.modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* margin-right: 0px; */
+  background: white;
+  /* border: 1px solid black; */
+  font-size: 1.5em;
+  cursor: pointer;
+  /* border-radius: 50px; */
+}
+#create-form {
+  flex-grow: 1;
+}
+.create-input {
+  flex: 1;
+  padding: 0.5em;
+}
+.create-input:not(#create-name) {
+  min-height: 100px;
+  width: 80%;
+}
+
+#content-container {
+  width: 100%;
+  position: relative;
+}
+.arrow {
+  width: 70%;
+}
+#content {
+  width: auto;
+  display: flex;
+  gap: 4vmin;
+  position: absolute;
+  left: 2vmin;
+  right: 0%;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+#content > .recipe-img {
+  width: 370px;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: center;
+  /* flex: 1; */
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.4);
+}
+@keyframes select-img {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+  }
+}
+#content > .recipe-img:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.7);
+  animation: select-img 0.15s ease-in;
+  transform: scale(1.03);
+  cursor: pointer;
+}
+#recipe-content {
+  flex-grow: 1;
+  color: white;
+}
+#recipe-content > h1 > span {
+  /* -webkit-text-stroke: 1px black; */
+  background-color: black;
+  font-family: "Anton";
+  font-weight: 1000;
+  font-size: 50px;
+  align-self: left;
+}
+#recipe-content > p > span {
+  background-color: black;
+  font-size: 25px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+.background-image {
+  position: absolute;
+  z-index: -1;
+  background-size: cover;
+  width: 100%;
+  height: 99%;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+#update-form {
+  flex-grow: 1;
+}
+
+.scroll-btn {
+  position: absolute;
+  background-color: white;
+  border: 0;
+  z-index: 2;
+  width: 10vmin;
+  height: 10vmin;
+  opacity: 40%;
+  border-radius: 50%;
+}
+
+.scroll-btn:first-of-type {
+  top: 45%;
+  left: 1vmin;
+}
+.scroll-btn:last-of-type {
+  top: 45%;
+  right: 1vmin;
+}
+.scroll-btn:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+.scroll-btn:active {
+  transform: scale(0.94);
+}

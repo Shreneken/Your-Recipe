@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Recipe!</title>
+    <link rel="stylesheet" href="./main.css" />
+    <script src="//cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
+    <script type="module" src="./main.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Your Recipe!<span>Recipes at your fingertips, Flavor at your command</span></h1>
+    </div>
+    <div id="top-bar">
+      <input
+        type="button"
+        class="top-container"
+        value="All Recipes"
+        id="my-recipes"
+      />
+      <input
+        type="button"
+        class="top-container"
+        value="Create Recipe"
+        id="create-recipes"
+      />
+      <input
+        type="text"
+        class="top-container"
+        placeholder="Enter recipe to search"
+        id="search-text"
+      />
+      <input
+        type="button"
+        class="top-container"
+        id="search-btn"
+        title="Search"
+        value placeholder="Search"
+        />
+    </div>
+    <div id="modal-1" class="create-modal">
+      <div class="create-modal-body">
+        <button class="modal-close">✖</button>
+        <div id="create-form"></div>
+        <br /><br />
+      </div>
+    </div>
+    <div id="content-container">
+      <button type="button" class="scroll-btn" title="left-scroll">
+        <img
+          src="/images/angles-left-solid.svg"
+          class="arrow"
+          alt="left-arrow"
+        />
+      </button>
+      <button type="button" class="scroll-btn" title="right-scroll">
+        <img
+          src="/images/angles-right-solid.svg"
+          class="arrow"
+          alt="right-arrow"
+        />
+      </button>
+      <div id="content" data-offset="0"></div>
+    </div>
+    <div id="modal-2" class="create-modal">
+      <div class="create-modal-body">
+        <button class="modal-close">✖</button>
+        <div id="recipe-content"></div>
+      </div>
+    </div>
+    <div id="modal-3" class="create-modal">
+      <div class="create-modal-body">
+        <button class="modal-close">✖</button>
+        <div id="update-form"></div>
+      </div>
+    </div>
+  </body>
+</html>
